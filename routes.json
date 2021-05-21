@@ -1,0 +1,117 @@
+var routes = {
+   "14094": {
+      "routeId": 14094,
+      "shortName": "4",
+      "longName": "Natural Bridge"
+   },
+   "14095": {
+      "routeId": 14095,
+      "shortName": "8",
+      "longName": "Bates-Morganford"
+   },
+   "14096": {
+      "routeId": 14096,
+      "shortName": "10",
+      "longName": "Gravois-Lindell"
+   },
+   "14097": {
+      "routeId": 14097,
+      "shortName": "11",
+      "longName": "Chippewa"
+   },
+   "14098": {
+      "routeId": 14098,
+      "shortName": "19",
+      "longName": "St Louis Ave"
+   },
+   "14099": {
+      "routeId": 14099,
+      "shortName": "20",
+      "longName": "South Broadway"
+   },
+   "14100": {
+      "routeId": 14100,
+      "shortName": "30",
+      "longName": "Arsenal"
+   },
+   "14101": {
+      "routeId": 14101,
+      "shortName": "31",
+      "longName": "Chouteau"
+   },
+   "14102": {
+      "routeId": 14102,
+      "shortName": "32",
+      "longName": "ML King"
+   },
+   "14103": {
+      "routeId": 14103,
+      "shortName": "40",
+      "longName": "North Broadway"
+   },
+   "14104": {
+      "routeId": 14104,
+      "shortName": "41",
+      "longName": "Lee"
+   },
+   "14107": {
+      "routeId": 14107,
+      "shortName": "73",
+      "longName": "Carondelet"
+   },
+   "14108": {
+      "routeId": 14108,
+      "shortName": "74",
+      "longName": "Florissant"
+   },
+   "14109": {
+      "routeId": 14109,
+      "shortName": "78",
+      "longName": "Larimore"
+   },
+   "14110": {
+      "routeId": 14110,
+      "shortName": "80",
+      "longName": "Park-Shaw"
+   },
+   "14111": {
+      "routeId": 14111,
+      "shortName": "94",
+      "longName": "Page"
+   },
+   "14112": {
+      "routeId": 14112,
+      "shortName": "96",
+      "longName": "Market Street Shuttle"
+   },
+   "14113": {
+      "routeId": 14113,
+      "shortName": "97",
+      "longName": "Delmar"
+   },
+   "14114": {
+      "routeId": 14114,
+      "shortName": "99",
+      "longName": "Downtown Trolley"
+   },
+   "14115": {
+      "routeId": 14115,
+      "shortName": "40X",
+      "longName": "I-55 Express"
+   },
+   "14116": {
+      "routeId": 14116,
+      "shortName": "58X",
+      "longName": "Twin Oaks Express"
+   },
+   "14117": {
+      "routeId": 14117,
+      "shortName": "174X",
+      "longName": "North Express"
+   },
+   "14118": {
+      "routeId": 14118,
+      "shortName": "410X",
+      "longName": "Eureka Express"
+   }
+}
