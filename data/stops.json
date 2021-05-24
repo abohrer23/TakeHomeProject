@@ -1,4 +1,4 @@
-var stops = {
+const stops = {
    "127": {
       "stopId": 127,
       "name": "THEKLA @ EMERSON SB",

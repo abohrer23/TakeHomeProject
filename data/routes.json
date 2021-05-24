@@ -1,4 +1,4 @@
-var routes = {
+const routes = {
    "14094": {
       "routeId": 14094,
       "shortName": "4",
