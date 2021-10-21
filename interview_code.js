@@ -14,6 +14,7 @@ $(function(){
 	 */
 
 	var option = document.createElement("option");
+	//blank option as the default
 	option.text = "";
 	document.getElementById("dropdown").add(option);
 	
@@ -37,22 +38,32 @@ function InsertText(Id, Text){
 	Element.innerHTML = Text;
 };
 
-//helper function similar to Insert, but concatenates text with a newline character
+//helper function similar to Insert, but concatenates text (with a newline)
 function concatText(Id, Text){
 	var Element = document.getElementById(Id);
 	Element.innerHTML += (Text)+"<br>";
 }
 
+//sort array with helper: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+function compareOrder(a,b){
+	if (a.order < b.order){
+		return -1;
+	}
+	if (a.order > b.order){
+		return 1;
+	}
+	return 0;
+}
+
 //function to print out the stops based on the selected route, called by eventlistener
 function printStops(){
 
-	//console.log("printStops called,", document.getElementById("dropdown").value, "is selected");
 	InsertText("mainContent","");
 
 	let currentDropdownValue = document.getElementById("dropdown").value;
-	if (currentDropdownValue !== ""){ //check that a not blank value is selected (otherwise leave blank)
+	if (currentDropdownValue !== ""){ //check that a not default value is selected (otherwise leave blank)
 
-		//first, need the stop id
+		//first, need the route id
 		let routeNum = 0;
 		Object.entries(routes).forEach(element => {
 			if (element[1].shortName === currentDropdownValue.split(" ")[0]){
@@ -61,33 +72,39 @@ function printStops(){
 		});
 		console.log("routeNum",routeNum);
 		
+
 		//then, need to get a list of the stops for that route
-		//because it's small, pushing values onto the array isn't bad complexity (array doubling)
-		//because the dataset is complete and stops are listed in order (at least by my spot-checking), we will
-		//assume the first array spot is the first stop, the second is the second, and so on.
-		let stopIdsOnRoute = [];
-		Object.entries(routeStops).forEach(element => {
-			if (element[1].routeId === routeNum){
-				stopIdsOnRoute.push(element[1].stopId);
+		//updated to be flexible to out of order stops
+		let stopsOnRoute = [];
+
+		Object.entries(routeStops).forEach(routeStop => {
+
+			//found a stop on the route
+			if (routeStop[1].routeId === routeNum){
+
+				//find stop name and create stop to add to array
+				Object.entries(stops).forEach(stop => {
+				
+					//found stop obj that matches id
+					if (parseInt(stop[0]) === routeStop[1].stopId){
+					
+						//create stop object with id, name, and order # to add to array
+						stopsOnRoute.push({
+							id: routeStop[1].stopId,
+							name: stop[1].name,
+							order: routeStop[1].stopOrder
+						});
+					
+					}
+				});
+
 			}
 		});
-		console.log("stopIdsOnRoute",stopIdsOnRoute);
 
-
-		//finally need to get the full name for each of those to print them
-		//go over each of the stopIdsOnRoute and search stops.json for it, though worst case they're all at the end
-		stopIdsOnRoute.forEach((stopElem,index) => {
-
-			//let stop = stopsArray.find(element => { parseInt(element[0]) === stopElem} );
-			let stop;
-			Object.entries(stops).forEach(element => {
-				if (parseInt(element[0]) === stopElem){
-					stop = element;
-				}
-			});
-
-			let stopName = (stop[1].name);
-			concatText("mainContent","Stop "+(index+1)+": "+stopName);
+		//sort by order and print
+		stopsOnRoute.sort(compareOrder);
+		stopsOnRoute.forEach(stop => {
+			concatText("mainContent", "Stop " + (stop.order) + ": " + stop.name);
 		});
 
 	}
